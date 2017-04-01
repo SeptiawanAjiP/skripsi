@@ -1,6 +1,8 @@
 package com.example.septiawanajipradan.kanibal.main;
 
+import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -31,16 +33,10 @@ import java.util.Random;
  */
 public class PanicARFragment extends PARFragment {
 
-    //==============================================================================================
-    // Variable declaration
-    //==============================================================================================
     private static ArrayList<PARPoiLabel> labelRepo = new ArrayList<PARPoiLabel>();
     private DatabaseHandler databaseHandler;
     private ArrayList<BangunanSensus> bangunanSensusArrayList;
 
-    //==============================================================================================
-    // Lifecycle
-    //==============================================================================================
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -148,7 +144,10 @@ public class PanicARFragment extends PARFragment {
         parPoiLabel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), parPoiLabel.getTitle() + " - " + parPoiLabel.getDescription(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(getActivity(), parPoiLabel.getTitle() + " - " + parPoiLabel.getDescription(), Toast.LENGTH_LONG).show();
+                CustomModalScan customModalScan = new CustomModalScan(getActivity(),parPoiLabel.getTitle());
+                customModalScan.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                customModalScan.show();
             }
         });
 
